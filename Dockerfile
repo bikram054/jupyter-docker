@@ -1,7 +1,8 @@
+FROM alpine:latest
+
 ENV CONDA_VERSION 4.5.12
 ENV CONDA_MD5 4be03f925e992a8eda03758b72a77298
 
-FROM alpine:latest
 RUN addgroup -S anaconda && adduser -D -u 10151 anaconda -G anaconda && \
     wget --quiet https://repo.continuum.io/miniconda/Miniconda2-$CONDA_VERSION-Linux-x86_64.sh && \
     echo "${CONDA_MD5}  Miniconda2-$CONDA_VERSION-Linux-x86_64.sh" > miniconda.md5 && \
