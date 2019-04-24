@@ -5,4 +5,4 @@ RUN apt-get update \
   && cd /usr/local/bin \
   && ln -s /usr/bin/python3 python \
   && pip3 install --upgrade pip
-RUN pip3 install pandas seaborn matplotlib scipy scikit-learn statsmodels jupyter --no-build-isolation
+RUN pip3 install pandas seaborn matplotlib scipy scikit-learn statsmodels python-opencv tensorflow keras jupyter --no-build-isolation
