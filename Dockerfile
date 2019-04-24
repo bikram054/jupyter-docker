@@ -1,11 +1,8 @@
-FROM alpine:3.9
+FROM ubuntu:latest
 
-RUN apk add --update --no-cache python3 && \
-    python3 -m ensurepip && \
-    rm -r /usr/lib/python*/ensurepip && \
-    pip3 install --upgrade pip setuptools && \
-    if [ ! -e /usr/bin/pip ]; then ln -s pip3 /usr/bin/pip ; fi && \
-    if [[ ! -e /usr/bin/python ]]; then ln -sf /usr/bin/python3 /usr/bin/python; fi && \
-    rm -r /root/.cache
-RUN apk add --update --no-cache gcc pkgconfig py3-zmq
-RUN pip3 install jupyter
+RUN apt-get update \
+  && apt-get install -y python3-pip python3-dev \
+  && cd /usr/local/bin \
+  && ln -s /usr/bin/python3 python \
+  && pip3 install --upgrade pip
+RUN pip3 install pandas seaborn matplotlib scipy scikit-learn statsmodels jupyter --no-build-isolation
